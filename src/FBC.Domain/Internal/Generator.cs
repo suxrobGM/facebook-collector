@@ -2,6 +2,6 @@
 
 internal static class Generator
 {
-    internal static string NewGuid() 
+    public static string NewGuid() 
         => Guid.NewGuid().ToString();
 }

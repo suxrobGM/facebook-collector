@@ -17,7 +17,7 @@ namespace FBC.EntityFramework.Data
         }
 
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Institution> Institutions { get; set; }
+        public virtual DbSet<Education> Institutions { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -38,7 +38,7 @@ namespace FBC.EntityFramework.Data
                     .OnDelete(DeleteBehavior.Cascade);                             
             });
 
-            builder.Entity<UserInstitution>(entity =>
+            builder.Entity<UserEducation>(entity =>
             {
                 entity.HasKey(k => new { k.StudentId, k.InstitutionId });
 

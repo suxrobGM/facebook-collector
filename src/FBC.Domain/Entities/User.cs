@@ -1,52 +1,45 @@
-﻿namespace FBC.Domain.Entities;
+﻿using FBC.Domain.ValueObjects;
 
-public class User
+namespace FBC.Domain.Entities;
+
+public class User : Entity
 {
-    public User()
-    {
-        ScrappedTime = DateTime.Now;
-        Institutions = new List<UserInstitution>();
-        Works = new List<Employee>();
-    }
+    public string? UserName { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? Bio { get; set; }
+    public Gender Gender { get; set; }
 
-    public string Id { get; set; }
-    public string Username { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Bio { get; set; }
-    public string Gender { get; set; }
-    public string LivedCities { get; set; }
-    public string Hometown { get; set; }
-    public string MaritalStatus { get; set; }
-    public string Skills { get; set; }
-    public string Languages { get; set; }
-    public string ReligiousView { get; set; }
-    public string ContactNumbers { get; set; }
-    public string Instagram { get; set; }
-    public string Twitter { get; set; }
-    public string YouTube { get; set; }
-    public string LinkedIn { get; set; }
-    public string GitHub { get; set; }
-    public string VK { get; set; }
-    public string OK { get; set; }
-    public string WebSites { get; set; }
-    public string Quote { get; set; }
+    public string? CurrentCityId { get; set; }
+    public City? CurrentCity { get; set; }
+    public List<City> LivedCities { get; set; } = new();
+    public string? ReligiousView { get; set; }
+
+    public string? HometowId { get; set; }
+    public City? Hometown { get; set; }
+    public string? MaritalStatus { get; set; }
+    public List<string> Skills { get; set; } = new();
+    public List<string> Languages { get; set; } = new();
+    
+    public List<Contact> Contacts { get; set; } = new();
+    public string? Quote { get; set; }
     public bool IsMyFriend { get; set; }
-    public string ProfilePhotoSrc { get; set; }
-    public string HeaderPhotoSrc { get; set; }
+    public string? ProfilePhotoSrc { get; set; }
+    public string? HeaderPhotoSrc { get; set; }
     public DateTime? Birthday { get; set; }
     public DateTime? MemberSince { get; set; }
-    public DateTime? ScrappedTime { get; set; }
+    public DateTime? Timestamp { get; set; } = DateTime.Now;
 
-    public virtual List<UserInstitution> Institutions { get; set; }
-    public virtual List<Employee> Works { get; set; }
+    public virtual List<UserEducation> Institutions { get; set; } = new();
+    public virtual List<Employee> Works { get; set; } = new();
 
     public void GenerateUsername()
     {
         var rand = new Random();
-        Username = $"{FirstName}.{LastName}.{rand.Next(1000, 9999)}".TranslateToLatin().IgnoreChars().ToLower();
+        UserName = $"{FirstName}.{LastName}.{rand.Next(1000, 9999)}".TranslateToLatin().IgnoreChars().ToLower();
     }
-    public void ParseFLName(string userFullName)
+
+    public void ParseFullName(string userFullName)
     {
         var nameTokens = userFullName.Split(' ');
 
@@ -67,9 +60,10 @@ public class User
             LastName = "";
         }
     }
+
     public override string ToString()
     {
-        return $"{Id} - {Username} {FirstName} {LastName} {Gender} {Bio}";
+        return $"{Id} - {UserName} {FirstName} {LastName} {Gender} {Bio}";
     }
 }
 

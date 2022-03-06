@@ -136,7 +136,7 @@ public class FacebookScrapper
 
             using (var db = new DatabaseContext())
             {
-                if (UserExistsInDb((i => i.Username == username), db))
+                if (UserExistsInDb((i => i.UserName == username), db))
                 {
                     _jsExecutor.ExecuteScript($"{GetElementByXPathJS(friendContainerXP)}.remove()");
                     if (count % 20 == 0)
@@ -235,7 +235,7 @@ public class FacebookScrapper
 
             using (var db = new DatabaseContext())
             {
-                if (UserExistsInDb((i => i.Username == username), db))
+                if (UserExistsInDb((i => i.UserName == username), db))
                 {
                     _jsExecutor.ExecuteScript($"{GetElementByXPathJS(friendContainerXP)}.remove()");
                     if (count % 20 == 0)
@@ -331,13 +331,13 @@ public class FacebookScrapper
             var user = new User()
             {
                 Id = profileId,
-                Username = username,
+                UserName = username,
                 ProfilePhotoSrc = profileImgSrc,
                 HeaderPhotoSrc = headerImgSrc,
                 Bio = profileBio,
                 IsMyFriend = isInFriendList
             };
-            user.ParseFLName(userFullName);
+            user.ParseFullName(userFullName);
 
             if (membershipNode != null)
                 user.MemberSince = DateTime.Parse(membershipNode.InnerText.Split(" с ")[1]);
@@ -427,7 +427,7 @@ public class FacebookScrapper
 
             if (educations != null)
             {
-                var institutions = new HashSet<UserInstitution>(new UserInstitutionComparer());
+                var institutions = new HashSet<UserEducation>(new UserInstitutionComparer());
                 foreach (var item in educations.ChildNodes)
                 {
                     var node = item.SelectSingleNode(".//div/span/a");
@@ -435,7 +435,7 @@ public class FacebookScrapper
                     string name = node.InnerText;
                     string institutionType = item.SelectNodes(".//div/span")[1].InnerText;
 
-                    var institution = new Institution()
+                    var institution = new Education()
                     {
                         Name = name,
                         Link = link
@@ -449,7 +449,7 @@ public class FacebookScrapper
                     else
                         institution = db.Institutions.Add(institution).Entity;
 
-                    var userInstitution = new UserInstitution() { Institution = institution };
+                    var userInstitution = new UserEducation() { Institution = institution };
                     institutions.Add(userInstitution);
                 }
                 user.Institutions.AddRange(institutions);
@@ -581,13 +581,13 @@ public class FacebookScrapper
             var user = new User()
             {
                 Id = profileId,
-                Username = username,
+                UserName = username,
                 ProfilePhotoSrc = profileImgSrc,
                 HeaderPhotoSrc = headerImgSrc,
                 Bio = profileBio,
                 IsMyFriend = isInFriendList
             };
-            user.ParseFLName(userFullName);
+            user.ParseFullName(userFullName);
 
             var basicInfo = document.Body.QuerySelector("#basic-info > div > div:nth-child(2)");
             var contactInfo = document.Body.QuerySelector("#contact-info > div > div:nth-child(2)");
@@ -601,7 +601,7 @@ public class FacebookScrapper
             var contactNumbersList = new List<string>();
             var webSitesList = new List<string>();
             var livedCitiesList = new List<string>();
-            var institutions = new HashSet<UserInstitution>(new UserInstitutionComparer());
+            var institutions = new HashSet<UserEducation>(new UserInstitutionComparer());
 
             if (basicInfo != null)
             {
@@ -668,7 +668,7 @@ public class FacebookScrapper
                     string name = eduNode.TextContent;
                     string institutionType = nodes[1].TextContent;
 
-                    var institution = new Institution()
+                    var institution = new Education()
                     {
                         Name = name,
                         Link = link
@@ -682,7 +682,7 @@ public class FacebookScrapper
                     else
                         institution = db.Institutions.Add(institution).Entity;
 
-                    var userInstitution = new UserInstitution() { Institution = institution };
+                    var userInstitution = new UserEducation() { Institution = institution };
                     institutions.Add(userInstitution);
                 }
             }
