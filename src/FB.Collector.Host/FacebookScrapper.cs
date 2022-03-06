@@ -1,10 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -12,10 +6,8 @@ using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 using AngleSharp.Html.Parser;
 using ScrapySharp.Network;
-using FacebookScraping.Data;
-using FBShared.Models;
 
-namespace FB.Collector.Host;
+namespace FBC.Host;
 
 public class FacebookScrapper
 {

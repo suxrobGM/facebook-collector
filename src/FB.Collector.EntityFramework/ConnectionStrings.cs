@@ -1,4 +1,4 @@
-﻿namespace FB.Collector.EntityFramework;
+﻿namespace FBC.EntityFramework;
 
 public static class ConnectionStrings
 {

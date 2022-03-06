@@ -1,4 +1,4 @@
-﻿namespace FB.Collector.EntityFramework.DbMigrations
+﻿namespace FBC.EntityFramework.DbMigrations
 {
     public class Class1
     {

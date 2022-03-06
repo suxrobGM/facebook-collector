@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace FB.Collector.DbMigrator;
+namespace FBC.DbMigrator;
 
 public static class SeedData
 {

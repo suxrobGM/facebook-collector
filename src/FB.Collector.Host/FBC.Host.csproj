@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AngleSharp" Version="0.13.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+		<PackageReference Include="ScrapySharp" Version="3.0.0" />
+		<PackageReference Include="Selenium.Chrome.WebDriver" Version="77.0.0" />
+		<PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\FB.Collector.Application\FBC.Application.csproj" />
+		<ProjectReference Include="..\FB.Collector.EntityFramework\FBC.EntityFramework.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,26 +1,23 @@
-﻿using System.Collections.Generic;
+﻿namespace FBC.Domain.Entities;
 
-namespace FBShared.Models
+public class UserInstitution
 {
-    public class UserInstitution
-    {
-        public string StudentId { get; set; }
-        public virtual User Student { get; set; }
+    public string StudentId { get; set; }
+    public virtual User Student { get; set; }
 
-        public string InstitutionId { get; set; }
-        public virtual Institution Institution { get; set; }
+    public string InstitutionId { get; set; }
+    public virtual Institution Institution { get; set; }
+}
+
+public class UserInstitutionComparer : IEqualityComparer<UserInstitution>
+{
+    public bool Equals(UserInstitution x, UserInstitution y)
+    {
+        return x.InstitutionId == y.InstitutionId && x.StudentId == y.StudentId;
     }
 
-    public class UserInstitutionComparer : IEqualityComparer<UserInstitution>
+    public int GetHashCode(UserInstitution obj)
     {
-        public bool Equals(UserInstitution x, UserInstitution y)
-        {
-            return x.InstitutionId == y.InstitutionId && x.StudentId == y.StudentId;
-        }
-
-        public int GetHashCode(UserInstitution obj)
-        {
-            return obj.Institution.Id.GetHashCode();
-        }
+        return obj.Institution.Id.GetHashCode();
     }
 }

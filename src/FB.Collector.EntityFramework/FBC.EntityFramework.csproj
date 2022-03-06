@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\FB.Collector.Domain\FB.Collector.Domain.csproj" />
+	  <ProjectReference Include="..\FB.Collector.Domain\FBC.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

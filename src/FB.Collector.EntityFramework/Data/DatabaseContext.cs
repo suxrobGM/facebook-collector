@@ -1,31 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FBShared.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using FBC.EntityFramework.Helpers;
 
-namespace FacebookScraping.Data
+namespace FBC.EntityFramework.Data
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext()
+        private readonly string connectionString;
+
+        public DatabaseContext(string connectionString)
         {
+            this.connectionString = connectionString;
         }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
+            connectionString = ConnectionStrings.Local;
         }
 
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Institution> Institutions { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            if (!optionsBuilder.IsConfigured)
+            if (!options.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\ProjectsV13; Initial Catalog=FacebookDB; Integrated Security=True; MultipleActiveResultSets=True")
-                    .UseLazyLoadingProxies();
+                DbContextHelpers.ConfigureMySql(connectionString, options);
             }
         }
 

@@ -1,7 +1,5 @@
-﻿using System;
-using System.IO;
+﻿namespace FBC.Host;
 
-namespace FB.Collector.Host;
 class Program
 {
     static void Main(string[] args)
