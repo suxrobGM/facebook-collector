@@ -14,7 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\FB.Collector.EntityFramework\FBC.EntityFramework.csproj" />
+		<ProjectReference Include="..\FBC.EntityFramework\FBC.EntityFramework.csproj" />
 	</ItemGroup>
 
 </Project>

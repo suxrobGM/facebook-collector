@@ -16,8 +16,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\FB.Collector.Application\FBC.Application.csproj" />
-		<ProjectReference Include="..\FB.Collector.EntityFramework\FBC.EntityFramework.csproj" />
+		<ProjectReference Include="..\FBC.Application\FBC.Application.csproj" />
+		<ProjectReference Include="..\FBC.EntityFramework\FBC.EntityFramework.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -11,8 +11,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\FB.Collector.Application.Contracts\FBC.Application.Contracts.csproj" />
-		<ProjectReference Include="..\FB.Collector.Domain\FBC.Domain.csproj" />
+		<ProjectReference Include="..\FBC.Application.Contracts\FBC.Application.Contracts.csproj" />
+		<ProjectReference Include="..\FBC.Domain\FBC.Domain.csproj" />
 	</ItemGroup>
 
 </Project>
