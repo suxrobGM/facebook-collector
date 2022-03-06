@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.Host", "src\FB.Collector.Host\FBC.Host.csproj", "{20F87724-A71D-4853-AFBF-C90CDC918F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.Host", "src\FBC.Host\FBC.Host.csproj", "{20F87724-A71D-4853-AFBF-C90CDC918F00}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.Domain", "src\FB.Collector.Domain\FBC.Domain.csproj", "{9CEA420E-7273-40CE-8C00-9BCF28A9F308}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.Domain", "src\FBC.Domain\FBC.Domain.csproj", "{9CEA420E-7273-40CE-8C00-9BCF28A9F308}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.EntityFramework", "src\FB.Collector.EntityFramework\FBC.EntityFramework.csproj", "{D3728D16-3AC1-4C67-994F-56328CA96D12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.EntityFramework", "src\FBC.EntityFramework\FBC.EntityFramework.csproj", "{D3728D16-3AC1-4C67-994F-56328CA96D12}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.EntityFramework.DbMigrations", "src\FB.Collector.EntityFramework.DbMigrations\FBC.EntityFramework.DbMigrations.csproj", "{A39A5CD5-4A36-45B0-AD5C-3DA249771B97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.EntityFramework.DbMigrations", "src\FBC.EntityFramework.DbMigrations\FBC.EntityFramework.DbMigrations.csproj", "{A39A5CD5-4A36-45B0-AD5C-3DA249771B97}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.Application", "src\FB.Collector.Application\FBC.Application.csproj", "{B6136C3B-2134-41EB-B8E4-D10C0E34D404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.Application", "src\FBC.Application\FBC.Application.csproj", "{B6136C3B-2134-41EB-B8E4-D10C0E34D404}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.Application.Contracts", "src\FB.Collector.Application.Contracts\FBC.Application.Contracts.csproj", "{26A32091-7EF0-4CC0-B30E-76AA7EA6DF5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.Application.Contracts", "src\FBC.Application.Contracts\FBC.Application.Contracts.csproj", "{26A32091-7EF0-4CC0-B30E-76AA7EA6DF5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.DbMigrator", "src\FB.Collector.DbMigrator\FBC.DbMigrator.csproj", "{E47CE114-2924-4818-99E8-A06D535C7C60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FBC.DbMigrator", "src\FBC.DbMigrator\FBC.DbMigrator.csproj", "{E47CE114-2924-4818-99E8-A06D535C7C60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
