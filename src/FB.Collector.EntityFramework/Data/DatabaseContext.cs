@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FacebookScraping.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class DatabaseContext : DbContext
     {
-        public ApplicationDbContext()
+        public DatabaseContext()
         {
         }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
         }
 
