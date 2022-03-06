@@ -8,7 +8,7 @@ internal static class DbContextHelpers
                 ServerVersion.AutoDetect(connectionString),
                 o =>
                 {
-                    o.MigrationsAssembly("Logistics.EntityFramework.DbMigrations");
+                    o.MigrationsAssembly("FBC.EntityFramework.DbMigrations");
                     o.EnableRetryOnFailure(8, TimeSpan.FromSeconds(15), null);
                 })
             .UseLazyLoadingProxies();
