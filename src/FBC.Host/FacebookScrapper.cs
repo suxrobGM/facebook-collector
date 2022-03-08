@@ -134,23 +134,23 @@ public class FacebookScrapper
             Console.WriteLine();
             Console.Write($"{++count}. ");
 
-            using (var db = new DatabaseContext())
-            {
-                if (UserExistsInDb((i => i.UserName == username), db))
-                {
-                    _jsExecutor.ExecuteScript($"{GetElementByXPathJS(friendContainerXP)}.remove()");
-                    if (count % 20 == 0)
-                    {
-                        _jsExecutor.ExecuteScript("window.scrollTo(0, document.body.scrollHeight/2)");
-                        Thread.Sleep(1000);
-                    }
-                    continue;
-                }
-            }
+            //using (var db = new DatabaseContext())
+            //{
+            //    if (UserExistsInDb((i => i.UserName == username), db))
+            //    {
+            //        _jsExecutor.ExecuteScript($"{GetElementByXPathJS(friendContainerXP)}.remove()");
+            //        if (count % 20 == 0)
+            //        {
+            //            _jsExecutor.ExecuteScript("window.scrollTo(0, document.body.scrollHeight/2)");
+            //            Thread.Sleep(1000);
+            //        }
+            //        continue;
+            //    }
+            //}
 
             try
             {
-                ScrapUserBrowser(friendLink, isMyFriend, () => { _jsExecutor.ExecuteScript($"{GetElementByXPathJS(friendContainerXP)}.remove()"); });
+                //ScrapUserBrowser(friendLink, isMyFriend, () => { _jsExecutor.ExecuteScript($"{GetElementByXPathJS(friendContainerXP)}.remove()"); });
             }
             catch (Exception ex)
             {
@@ -233,19 +233,19 @@ public class FacebookScrapper
             Console.WriteLine();
             Console.Write($"{++count}. ");
 
-            using (var db = new DatabaseContext())
-            {
-                if (UserExistsInDb((i => i.UserName == username), db))
-                {
-                    _jsExecutor.ExecuteScript($"{GetElementByXPathJS(friendContainerXP)}.remove()");
-                    if (count % 20 == 0)
-                    {
-                        _jsExecutor.ExecuteScript("window.scrollTo(0, document.body.scrollHeight/2)");
-                        Thread.Sleep(1000);
-                    }
-                    continue;
-                }
-            }
+            //using (var db = new DatabaseContext())
+            //{
+            //    if (UserExistsInDb((i => i.UserName == username), db))
+            //    {
+            //        _jsExecutor.ExecuteScript($"{GetElementByXPathJS(friendContainerXP)}.remove()");
+            //        if (count % 20 == 0)
+            //        {
+            //            _jsExecutor.ExecuteScript("window.scrollTo(0, document.body.scrollHeight/2)");
+            //            Thread.Sleep(1000);
+            //        }
+            //        continue;
+            //    }
+            //}
 
             // TEST
             if (friendLink.Contains("profile.php"))
@@ -271,7 +271,7 @@ public class FacebookScrapper
 
         Parallel.ForEach(friendsLinkList, (profileLink) =>
         {
-            ScrapUserHidelessBrowser(profileLink, true);
+            //ScrapUserHidelessBrowser(profileLink, true);
             Console.WriteLine();
         });
     }
@@ -283,7 +283,7 @@ public class FacebookScrapper
     /// <param name="profileLink">Full link to user profile starts with 'https://m.facebook.com/'</param>
     /// <param name="isInFriendList">If user has in your friend list</param>
     /// <param name="callback">Callback function after completing this method</param>
-    public void ScrapUserBrowser(string profileLink, bool isInFriendList = false, Action callback = null)
+    /*public void ScrapUserBrowser(string profileLink, bool isInFriendList = false, Action callback = null)
     {
         _startupWindow = _driver.CurrentWindowHandle;
         OpenNewTab(profileLink);
@@ -552,7 +552,7 @@ public class FacebookScrapper
         _driver.Close();
         _driver.SwitchTo().Window(_startupWindow);
         callback?.Invoke();
-    }
+    }*/
 
     /// <summary>
     /// Scrap user by using browser (usually Chrome browser).
@@ -561,7 +561,7 @@ public class FacebookScrapper
     /// <param name="profileLink">Full link to user profile starts with 'https://m.facebook.com/'</param>
     /// <param name="isInFriendList">If user has in your friend list</param>
     /// <param name="callback">Callback function, will invoke after completing this method</param>
-    public void ScrapUserHidelessBrowser(string profileLink, bool isInFriendList = false, Action callback = null)
+    /*public void ScrapUserHidelessBrowser(string profileLink, bool isInFriendList = false, Action callback = null)
     {
         var aboutPage = _browser.NavigateToPage(new Uri($"{profileLink}/about/"));
         var document = _parser.ParseDocument(aboutPage.Content);
@@ -786,7 +786,7 @@ public class FacebookScrapper
         }
 
         callback?.Invoke();
-    }
+    }*/
 
     private async Task LoginToHidelessBrowserAsync()
     {
@@ -803,11 +803,11 @@ public class FacebookScrapper
             //ScrapUser_2("https://m.facebook.com/realgulomov");
         });
     }
-    private bool UserExistsInDb(Func<User, bool> predicate, DatabaseContext context)
-    {
-        var user = context.Users.Where(predicate).FirstOrDefault();
-        return user != null;
-    }
+    //private bool UserExistsInDb(Func<User, bool> predicate, DatabaseContext context)
+    //{
+    //    var user = context.Users.Where(predicate).FirstOrDefault();
+    //    return user != null;
+    //}
     private bool IsElementPresent(By by)
     {
         try

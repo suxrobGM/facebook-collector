@@ -1,6 +1,6 @@
 ﻿namespace FBC.Application.Services.Implementations;
 
-internal sealed class FacebookCollector : IFacebookCollector
+internal sealed class DataService : IDataService
 {
 
 }
