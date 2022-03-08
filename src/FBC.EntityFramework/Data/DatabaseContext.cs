@@ -16,10 +16,6 @@ namespace FBC.EntityFramework.Data
             connectionString = ConnectionStrings.Local;
         }
 
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Education> Educations { get; set; }
-        public virtual DbSet<Company> Companies { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             if (!options.IsConfigured)

@@ -9,7 +9,7 @@ using ScrapySharp.Network;
 
 namespace FBC.Host;
 
-public class FacebookScrapper
+/*public class FacebookScrapper
 {
     private IWebDriver _driver;
     private IJavaScriptExecutor _jsExecutor;
@@ -855,4 +855,4 @@ public class FacebookScrapper
             return IsElementPresent(by);
         });
     }
-}
+}*/
