@@ -9,19 +9,10 @@ public class User : Entity
     public string? LastName { get; set; }
     public string? Bio { get; set; }
     public Gender Gender { get; set; }
-
-    public string? CurrentCityId { get; set; }
-    public City? CurrentCity { get; set; }
-    public List<City> LivedCities { get; set; } = new();
     public string? ReligiousView { get; set; }
-
+    public string? CurrentCityId { get; set; }
     public string? HometowId { get; set; }
-    public City? Hometown { get; set; }
     public string? MaritalStatus { get; set; }
-    public List<string> Skills { get; set; } = new();
-    public List<string> Languages { get; set; } = new();
-    
-    public List<Contact> Contacts { get; set; } = new();
     public string? Quote { get; set; }
     public bool IsMyFriend { get; set; }
     public string? ProfilePhotoSrc { get; set; }
@@ -30,8 +21,14 @@ public class User : Entity
     public DateTime? MemberSince { get; set; }
     public DateTime? Timestamp { get; set; } = DateTime.Now;
 
-    public virtual List<UserEducation> Institutions { get; set; } = new();
-    public virtual List<Employee> Works { get; set; } = new();
+    public virtual City? CurrentCity { get; set; }
+    public virtual City? Hometown { get; set; }
+    public virtual List<City> LivedCities { get; set; } = new();
+    public virtual List<Skill> Skills { get; set; } = new();
+    public virtual List<Contact> Contacts { get; set; } = new();
+    public virtual List<Language> Languages { get; set; } = new();
+    public virtual List<Education> Educations { get; set; } = new();
+    public virtual List<Employee> WorkPlaces { get; set; } = new();
 
     public void GenerateUsername()
     {
@@ -69,9 +66,9 @@ public class User : Entity
 
 public class UserComparer : IEqualityComparer<User>
 {
-    public bool Equals(User user1, User user2)
+    public bool Equals(User? user1, User? user2)
     {
-        return user1.Id == user2.Id;
+        return user1?.Id == user2?.Id;
     }
 
     public int GetHashCode(User user)

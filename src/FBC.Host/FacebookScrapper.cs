@@ -444,10 +444,10 @@ public class FacebookScrapper
                     if (institutionType != "Средняя школа")
                         institution.IsHigherEducation = true;
 
-                    if (db.Institutions.Where(i => i.Link == institution.Link).FirstOrDefault() != null)
-                        institution = db.Institutions.Where(i => i.Link == institution.Link).FirstOrDefault();
+                    if (db.Educations.Where(i => i.Link == institution.Link).FirstOrDefault() != null)
+                        institution = db.Educations.Where(i => i.Link == institution.Link).FirstOrDefault();
                     else
-                        institution = db.Institutions.Add(institution).Entity;
+                        institution = db.Educations.Add(institution).Entity;
 
                     var userInstitution = new UserEducation() { Institution = institution };
                     institutions.Add(userInstitution);
@@ -677,10 +677,10 @@ public class FacebookScrapper
                     if (institutionType != "Средняя школа")
                         institution.IsHigherEducation = true;
 
-                    if (db.Institutions.Where(i => i.Link == institution.Link).FirstOrDefault() != null)
-                        institution = db.Institutions.Where(i => i.Link == institution.Link).FirstOrDefault();
+                    if (db.Educations.Where(i => i.Link == institution.Link).FirstOrDefault() != null)
+                        institution = db.Educations.Where(i => i.Link == institution.Link).FirstOrDefault();
                     else
-                        institution = db.Institutions.Add(institution).Entity;
+                        institution = db.Educations.Add(institution).Entity;
 
                     var userInstitution = new UserEducation() { Institution = institution };
                     institutions.Add(userInstitution);

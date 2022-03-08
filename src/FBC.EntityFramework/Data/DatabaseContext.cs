@@ -17,7 +17,7 @@ namespace FBC.EntityFramework.Data
         }
 
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Education> Institutions { get; set; }
+        public virtual DbSet<Education> Educations { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -32,23 +32,35 @@ namespace FBC.EntityFramework.Data
         {
             builder.Entity<User>(entity =>
             {
-                entity.HasMany(m => m.Works)
+                entity.HasOne(m => m.Hometown)
+                    .WithOne()
+                    .HasForeignKey<User>(m => m.HometowId);
+
+                entity.HasOne(m => m.CurrentCity)
+                    .WithOne()
+                    .HasForeignKey<User>(m => m.CurrentCityId);
+
+                entity.HasMany(m => m.WorkPlaces)
                     .WithOne(m => m.User)
                     .HasForeignKey(m => m.UserId)
-                    .OnDelete(DeleteBehavior.Cascade);                             
-            });
+                    .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Entity<UserEducation>(entity =>
-            {
-                entity.HasKey(k => new { k.StudentId, k.InstitutionId });
+                entity.HasMany(m => m.Contacts)
+                    .WithOne(m => m.User)
+                    .HasForeignKey(m => m.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
-                entity.HasOne(m => m.Institution)
-                    .WithMany(m => m.Students)
-                    .HasForeignKey(m => m.InstitutionId);
+                entity.HasMany(m => m.Educations)
+                    .WithMany(m => m.Students);
 
-                entity.HasOne(m => m.Student)
-                    .WithMany(m => m.Institutions)
-                    .HasForeignKey(m => m.StudentId);                
+                entity.HasMany(m => m.Skills)
+                    .WithMany(m => m.Users);
+
+                entity.HasMany(m => m.Languages)
+                    .WithMany(m => m.Speakers);
+
+                entity.HasMany(m => m.LivedCities)
+                    .WithMany(m => m.People);
             });
 
             builder.Entity<Company>(entity =>
@@ -57,11 +69,6 @@ namespace FBC.EntityFramework.Data
                     .WithOne(m => m.Company)
                     .HasForeignKey(m => m.CompanyId)
                     .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            builder.Entity<Employee>(entity =>
-            {
-                entity.ToTable("Employees");
             });
         }
     }
