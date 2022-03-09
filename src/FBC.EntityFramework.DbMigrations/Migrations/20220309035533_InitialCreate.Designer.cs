@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FBC.EntityFramework.DbMigrations.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220308212302_IntialCreate")]
-    partial class IntialCreate
+    [Migration("20220309035533_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -194,6 +194,9 @@ namespace FBC.EntityFramework.DbMigrations.Migrations
 
                     b.Property<string>("CurrentCityId")
                         .HasColumnType("varchar(255)");
+
+                    b.Property<string>("ExternalId")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext");

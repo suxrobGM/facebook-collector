@@ -193,6 +193,9 @@ namespace FBC.EntityFramework.DbMigrations.Migrations
                     b.Property<string>("CurrentCityId")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("ExternalId")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext");
 

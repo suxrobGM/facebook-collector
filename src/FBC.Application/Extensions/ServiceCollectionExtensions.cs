@@ -33,8 +33,8 @@ public static class ServiceCollectionExtensions
         FacebookScraperOptions options)
     {
         services.AddSingleton(options);
-        services.AddScoped<IDataService, DataService>();
-        services.AddScoped<IFacebookScraper, FacebookScraper>();
+        services.AddSingleton<IDataService, DataService>();
+        services.AddSingleton<IFacebookScraper, FacebookScraper>();
         return services;
     }
 }

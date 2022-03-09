@@ -3,6 +3,6 @@
 public interface IFacebookScraper
 {
     void OpenBrowser();
-    Task LoginAsync();
-    Task ScrapFriendsListAsync();
+    void Login();
+    void ScrapFriendsList(string username);
 }

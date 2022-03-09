@@ -1,20 +1,20 @@
+using FBC.Application.Services;
+
 namespace FBC.Host;
 
 public class Worker : BackgroundService
 {
-    private readonly ILogger<Worker> _logger;
+    private readonly IFacebookScraper _facebookScraper;
 
-    public Worker(ILogger<Worker> logger)
+    public Worker(IFacebookScraper facebookScraper)
     {
-        _logger = logger;
+        _facebookScraper = facebookScraper;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            await Task.Delay(1000, stoppingToken);
-        }
+        _facebookScraper.OpenBrowser();
+        _facebookScraper.Login();
+        await Task.CompletedTask;
     }
 }
