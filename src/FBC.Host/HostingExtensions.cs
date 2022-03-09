@@ -9,13 +9,7 @@ internal static class HostingExtensions
     {
         builder.ConfigureServices((ctx, services) =>
         {
-            
-            services.AddApplicationLayer(options =>
-            {
-                options.Email = "suxrobgm@gmail.com";
-                //options.Password = "Suxrobbek0729#";
-            });
-
+            services.AddApplicationLayer(ctx.Configuration);
             services.AddEntityFrameworkLayer(ctx.Configuration);
             services.AddHostedService<Worker>();
         });
