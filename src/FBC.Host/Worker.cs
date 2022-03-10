@@ -15,6 +15,7 @@ public class Worker : BackgroundService
     {
         _facebookScraper.OpenBrowser();
         _facebookScraper.Login();
+        _facebookScraper.ScrapFriendsList(_facebookScraper.FacebookId);
         await Task.CompletedTask;
     }
 }
