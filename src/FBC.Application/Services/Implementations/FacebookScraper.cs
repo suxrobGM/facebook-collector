@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using FBC.Application.Models;
+using System.Collections.Concurrent;
 
 namespace FBC.Application.Services.Implementations;
 
@@ -79,7 +80,7 @@ internal sealed class FacebookScraper : IFacebookScraper
         ThrowIfInvalidState();
 
         _driver.Navigate().GoToUrl($"https://m.facebook.com/{facebookId}/friends");
-        var ids = new HashSet<ulong>();
+        var ids = new ConcurrentDictionary<ulong, bool>();
         var friendNodeXPath = "//div[@data-sigil=\"undoable-action\"]";
         var count = 0;
 
@@ -91,7 +92,7 @@ internal sealed class FacebookScraper : IFacebookScraper
 
             if (userData != null && userData.Id.HasValue)
             {
-                ids.Add(userData.Id.Value);
+                ids.TryAdd(userData.Id.Value, false);
                 _jsExecutor.ExecuteScript($"{GetElementByXPathJS(friendNodeXPath)}.remove()");
                 count++;
                 _logger.LogInformation("{Count}. Added {ID} to list", count, userData.Id.Value);
@@ -106,6 +107,11 @@ internal sealed class FacebookScraper : IFacebookScraper
 
         _logger.LogInformation("Scraped {Count} IDs from friends list", ids.Count);
     }
+
+    //private Task ScrapUsers(ConcurrentDictionary<ulong, bool> idsList)
+    //{
+    //    _driver.SwitchTo().
+    //}
 
     private void ThrowIfInvalidState()
     {
