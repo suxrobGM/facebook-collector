@@ -54,7 +54,7 @@ public class FacebookScrapper
     /// <summary>
     /// Authorize to Chrome and hideless browser
     /// </summary>
-    public async Task LoginToMobileFacebookAsync()
+    public Task LoginToMobileFacebookAsync()
     {
         _driver.Navigate().GoToUrl("https://m.facebook.com");
         _driver.FindElement(By.Id("m_login_email")).SendKeys(_email);
@@ -64,6 +64,7 @@ public class FacebookScrapper
         Thread.Sleep(3000);
         _driver.Navigate().GoToUrl("https://m.facebook.com/login/save-device/cancel/?flow=interstitial_nux&nux_source=regular_login");
         Console.WriteLine("Logged to account");
+        return Task.CompletedTask;
     }
 
     /// <summary>

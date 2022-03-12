@@ -14,8 +14,8 @@ public class Worker : BackgroundService
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         _facebookScraper.OpenBrowser();
-        _facebookScraper.Login();
-        _facebookScraper.ScrapFriendsList(_facebookScraper.FacebookId);
+        await _facebookScraper.LoginAsync();
+        await _facebookScraper.ScrapFriendsListAsync(_facebookScraper.FacebookId);
         await Task.CompletedTask;
     }
 }
