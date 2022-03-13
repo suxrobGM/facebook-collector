@@ -1,5 +1,5 @@
-﻿using FBC.EntityFramework.Data;
-using Microsoft.EntityFrameworkCore.Design;
+﻿using Microsoft.EntityFrameworkCore.Design;
+using FBC.EntityFramework.Data;
 
 namespace FBC.EntityFramework.DbMigrations;
 
